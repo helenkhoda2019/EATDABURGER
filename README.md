@@ -5,4 +5,4 @@ Eat A Burger! is a restaurant app that lets users input the names of burgers the
 
 
 ![Homepage](https://github.com/helenkhoda2019/EATDABURGER/blob/master/final.png)
-![Homepage](https://github.com/helenkhoda2019/EATDABURGER/blob/master/bbbbb.png)
+![Homepage](https://github.com/helenkhoda2019/EATDABURGER/blob/master/1.png)
