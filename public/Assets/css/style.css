@@ -1,0 +1,20 @@
+body{
+    background-image: url("../img/burger.jpg"); 
+
+    position: absolute;
+
+    left:40%;
+  
+  
+}
+.bd{
+    color:blue;
+}
+
+#ca {text-align: center;
+
+}
+
+.form-group{
+text-align: center;
+}
