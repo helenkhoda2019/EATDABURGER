@@ -19,10 +19,12 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var routes = require ('./controller/burger_controller.js')
-app.use (routes);
+//var routes = require ('./controller/burger_controller.js')
+//app.use (routes);
 
-
+app.get("/",function(req,res){
+  res.send("working");
+})
 
 app.get("/:id", function(req, res) {
   connection.query("SELECT * FROM burgers where id = ?", [req.params.id], function(err, data) {
