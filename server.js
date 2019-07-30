@@ -1,20 +1,20 @@
 var connection = require('./config/connection');
 var express = require("express");
 var exphbs = require("express-handlebars");
-var mysql = require("mysql");
+var bodyParser = require("body-parser");
 
 var app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 4200;
 
 // Use the express.static middleware to serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname +'/public'));
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -35,11 +35,11 @@ app.get("/:id", function(req, res) {
     }
 
     console.log(data);
-    res.render("burger", data[0]);
+    res.render("index", data[0]);
   });
 });
 
-app.post("/api/burgers", function(req, res) {
+app.post("/burgers", function(req, res) {
   connection.query("INSERT INTO burgers VALUES (?, ?)", [req.body.burger, req.body.burger], function(
     err,
     result
@@ -55,7 +55,7 @@ app.post("/api/burgers", function(req, res) {
 });
 
 
-app.put("/api/burgers/:id", function(req, res) {
+app.put("/burgers/:id", function(req, res) {
   connection.query(
     "UPDATE burgers SET burger_name = ?, devoured = ? WHERE id = ?",
     [req.body.burger_name, req.body.devoured, req.params.id],

@@ -3,19 +3,19 @@ var orm = {
     all: function (tableInput, cb){
         connection.query('SELECT * FROM '+ tableInput+';', function (err,result){
             if (err) throw err;
-            cb(result)
-        })
+            cb(result);
+        });
     },
     update: function (table, colValues, condition, cb) {
-        var query = "UPDATE  " +table;
+        var query = "UPDATE  " + table;
         query += " SET ";
         query += objToSql(colValues);
         query += " WHERE ";
         query += condition;
-        console.log("update query: " +query)
+        console.log("update query: " + query);
         connection.query(query, function(err, result){
             cb(result);
-        })
+        });
     },
     create: function (table, columns, values, cb) {
         var query = "INSERT INTO " + table;
@@ -25,15 +25,15 @@ var orm = {
         query += "VALUES (";
         query += printQuestionMarks(values.length);
         query += ") ";
-        console.log("create query: " +query);
+        console.log("create query: " + query);
         connection.query(query, values, function(err, results){
             if(err){
                 throw err;
             }
             cb(results);
-        })
+        });
     }
-}
+};
 // Insert into burgers(burger_name) values (?)
 //Helper function to convert object key/value pairs to SQL syntax
  function objToSql(ob) {
